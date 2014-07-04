@@ -1,0 +1,6 @@
+---
+  - user: name=deploy generate_ssh_key=yes shell=/bin/bash
+    sudo: yes
+  - authorized_key: user=deploy key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    register: rsa
+    sudo: yes

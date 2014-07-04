@@ -1,0 +1,3 @@
+---
+passenger_ubuntu_version: trusty
+passenger_enterprise_key: 'your key here'

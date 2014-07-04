@@ -1,0 +1,8 @@
+- name: Adds .gemrc
+  copy: src=gemrc dest=~{{ ruby_deploy_user }}/.gemrc owner={{ ruby_deploy_user }} group={{ ruby_deploy_user }} mode=0750
+  remote_user: "{{ ruby_deploy_user }}"
+  tags:
+    - ruby
+    - ruby:config
+    - config
+

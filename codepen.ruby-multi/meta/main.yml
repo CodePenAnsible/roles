@@ -1,0 +1,9 @@
+---
+dependencies:
+  - { role: codepen.ruby, version: "{{ all_ruby_versions[0] }}", ruby_default: "{{ all_ruby_versions[0] }}", when: "0 < all_ruby_versions|length" }
+  # TODO: get this to work with lots of versions
+  #- { role: codepen.ruby, version: "{{ all_ruby_versions[1] }}", when: "1 < all_ruby_versions|length" }
+  #- { role: codepen.ruby, version: "{{ all_ruby_versions[2] }}", when: "2 < all_ruby_versions|length" }
+  #- { role: codepen.ruby, version: "{{ all_ruby_versions[3] }}", when: "3 < all_ruby_versions|length" }
+  #- { role: codepen.ruby, version: "{{ all_ruby_versions[4] }}", when: "4 < all_ruby_versions|length" }
+

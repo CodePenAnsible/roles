@@ -1,0 +1,6 @@
+# Installing required ruby versions
+- include: ruby-install.yml ruby_version={{ version }}
+
+# Common ruby environment tasks (e.g. adding a .gemrc, ...)
+- include: common-post.yml
+

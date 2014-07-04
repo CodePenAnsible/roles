@@ -1,0 +1,25 @@
+- name: Checks if target ruby is installed
+  remote_user: "{{ ruby_deploy_user }}"
+  shell: cd; bash -lc "rbenv versions | grep {{ ruby_version }} | tr '*' ' ' | sed -e 's/\s\+//' | cut -f1 -d' '"
+  register: ruby_is_installed
+  tags:
+    - ruby
+    - ruby:install
+    - install
+
+- debug: msg="Version {{ ruby_version }}"
+  tags:
+    - version
+
+- name: Installs ruby
+  remote_user: "{{ ruby_deploy_user }}"
+  shell: cd; bash -lc "MAKEOPTS={{ rbenv_makeopts }} CONFIGURE_OPTS=--disable-install-rdoc rbenv install {{ ruby_version }}"
+  when: ruby_is_installed.stdout != ruby_version
+  # Takes no more than 600 secs on a small VM
+  async: 1200
+  poll: 30
+  notify: Sets global ruby version
+  tags:
+    - ruby
+    - ruby:install
+    - install

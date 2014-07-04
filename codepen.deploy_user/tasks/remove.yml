@@ -1,0 +1,5 @@
+---
+- hosts: webservers
+  tasks:
+    - user: name=deploy state=absent remove=true
+      sudo: yes
